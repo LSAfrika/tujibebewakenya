@@ -1,0 +1,23 @@
+{
+  "name": "tujibebe_party",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i raw.css -o ./index/styles.css --watch",
+    "prod": "npx tailwindcss -i raw.css -o ./index/styles.css --minify",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.16",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "firebase": "^9.6.7"
+  }
+}

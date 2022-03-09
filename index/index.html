@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Document</title>
+</head>
+
+<body class="font-poppins">
+    <!-- Nodal -->
+    <div id="modal" class="fixed top-0 left-0 z-50 items-center justify-center hidden w-full h-screen bg-black/70">
+        <div
+            class="relative flex items-center justify-center p-4 px-10 bg-white border-none outline-none w-fit md:w-1/2 gap-x-10 h-1/3">
+            <div style="clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%)" class="
+            absolute
+            font-bold
+            bg-[#4169e1]
+            w-1/2
+            sm:w-1/3
+            text-[30px]
+            top-0
+            left-0
+            mt-1
+            p-3
+            pr-10
+            text-white
+          ">
+                <h2>TWP.KE</h2>
+            </div>
+
+            <div id="spinner" class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+            <div id="formsubmitting" class="text-4xl text-[#4169e1] font-thin">
+                submitting form
+            </div>
+            <div id="formsubmitted" class="text-4xl hidden text-[#4169e1] font-thin">
+                form submitted successfully
+            </div>
+        </div>
+    </div>
+
+    <div class="relative z-10 flex flex-col w-full px-0 overflow-x-hidden h-fit">
+        <!-- todo NAV VAR -->
+
+        <nav class="
+          h-[80px]
+          fixed
+          top-0
+          z-40
+          flex flex-row
+          items-center
+          justify-between
+          w-full
+          px-2
+          py-1
+          mb-0
+          bg-blue-600
+          md:py-3
+        ">
+            <div class="flex items-center justify-center gap-1 text-2xl font-extrabold tracking-wider text-white ">
+                <img class="w-[50px] h-[50px]" src="../assets/image2vector.svg" alt="" srcset="" />
+                <a href="#home" class="hover:cursor-pointer">TWP.KE</a>
+            </div>
+
+            <div class="hidden md:flex gap-4 p-3 font-normal text-[24px] text-white">
+                <a href="#home" class="px-4 py-1 hover:border-b-2 hover:border-b-white hover:py-0 hover:cursor-pointer">
+                    home
+                </a>
+                <a href="#values"
+                    class="px-4 py-1 hover:border-b-2 hover:border-b-white hover:py-0 hover:cursor-pointer">
+                    values
+                </a>
+                <a href="#news" class="px-4 py-1 hover:border-b-2 hover:border-b-white hover:py-0 hover:cursor-pointer">
+                    news
+                </a>
+                <a href="#contacts"
+                    class="flex items-center justify-end px-8 py-1 font-normal text-blue-600 bg-white rounded-md hover:border-b-2 hover:cursor-pointer hover:bg-blue-700 hover:text-white hover:border-2 hover:border-white">
+                    <h2>join us</h2>
+                </a>
+            </div>
+
+            <!--todo  menu icon  -->
+            <div id="burger"
+                class="flex items-center p-4 mr-1 text-xl text-blue-300 active:bg-blue-700 hover:bg-blue-500 place-content-center md:hidden">
+                <svg class="w-10 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </div>
+        </nav>
+        <!-- todo MOBILE DROP DOWN -->
+        <div id="mobile" class="
+          w-full
+          fixed
+          z-40
+          flex-col
+          hidden
+          h-fit
+          mt-[80px]
+          bg-blue-700
+          md:hidden
+        ">
+            <div class="flex items-center justify-start w-full py-4 gap-x-2 hover:bg-blue-800 hover:cursor-pointer">
+                <svg class="w-6 h-6 mt-1 ml-2" fill="none" stroke="#ffffff" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                    </path>
+                </svg>
+                <a href="#home" id="links" class="w-full px-1 py-4 text-xl text-blue-200 ">
+                    home
+                </a>
+            </div>
+            <div class="flex items-center justify-start w-full py-4 gap-x-2 hover:bg-blue-800 hover:cursor-pointer">
+                <svg class="w-6 h-6 mt-1 ml-2" fill="none" stroke="#ffffff" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                    </path>
+                </svg>
+                <a href="#values" id="links" class="w-full px-1 py-4 text-xl text-blue-200 ">
+                    values
+                </a>
+            </div>
+            <div class="flex items-center justify-start w-full py-4 gap-x-2 hover:bg-blue-800 hover:cursor-pointer">
+                <svg class="w-6 h-6 mt-1 ml-2" fill="none" stroke="#ffffff" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+                </svg>
+                <a href="#news" id="links" class="w-full px-1 py-4 text-xl text-blue-200 ">
+                    news
+                </a>
+
+            </div>
+            <div class="flex items-center justify-start w-full py-4 gap-x-2 hover:bg-blue-800 hover:cursor-pointer">
+                <svg class="w-6 h-6 mt-1 ml-2" fill="none" stroke="#ffffff" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
+                    </path>
+                </svg>
+                <a href="#contacts" id="links" class="w-full px-1 py-4 text-xl text-blue-200 ">
+                    contact us
+                </a>
+
+
+
+
+
+
+            </div>
+        </div>
+
+        <!-- todo HERO SECTION -->
+        <section id="home"
+            class="relative z-10 flex flex-col justify-start w-full px-4 py-10 pb-0 pl-0 overflow-hidden bg-gray-200 h-fit lg:h-screen md:grid md:grid-cols-2">
+            <!-- todo HERO TEXT -->
+            <div class="w-full h-[40px] bg-transparent block md:col-span-2  "></div>
+
+            <div class="relative flex flex-col w-full p-4 pb-3 bg-blue-600 animate-fade-in-left"
+                style="clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 105%)">
+                <h1 class="
+              z-10
+              w-4/5
+              py-8
+              ml-1
+              text-[30px]
+              lg:text-[65px]
+              font-extrabold
+              tracking-wider
+              text-white
+              uppercase
+             
+            ">
+                    welcome to tujijenge wakenya party
+                </h1>
+                <p class="z-10 w-4/5 p-4 mt-4 mb-6 text-lg font-normal text-white">
+                    The party that cares for and protects the interests of the common
+                    <strong class="text-2xl font-bold">mwananchi</strong> for the growth
+                    of our economy and social wellbeing
+                </p>
+                <!-- todo cta button -->
+                <a href="#contacts" class="
+              z-10
+              py-4
+              md:py-2 
+              mt-10
+              
+              ml-1
+              font-bold
+              text-[18px]
+              
+              md:text-[22px]
+           
+              hover:bg-blue-600
+              hover:border-2
+              hover:border-white
+              hover:text-white
+              hover:cursor-pointer
+              text-blue-500
+              bg-white
+              rounded-full
+              outline-none
+              px-6
+              md:px-10
+              md:mt-16
+              w-fit
+            ">
+                    JOIN US TODAY
+                </a>
+            </div>
+
+            <div class="
+            relative
+            z-10
+            hidden
+            w-full
+            h-screen
+            pb-0
+            mt-[10px]
+            lg:flex lg:flex-col lg:justify-end lg:items-center
+            animate-fade-in-right
+          ">
+                <img src="../assets/HON-KABOGO.png" alt="" srcset="" class="w-full h-screen pt-4" />
+            </div>
+
+            <!-- todo logo -->
+            <div
+                class="absolute right-0 -rotate-45 bg-blue-600 bg-cover rounded-full lg:hidden opacity-30 w-96 h-96 md:w-[500px] md:h-[500px]">
+                <img src="../assets/image2vector.svg" alt="" srcset="" class="w-full h-auto" />
+            </div>
+        </section>
+
+        <!-- todo   MISSION AND VISION -->
+        <section id="values" class="
+          grid
+          w-full
+          grid-cols-1
+          gap-3
+          px-4
+         
+          py-[8px]
+          text-center
+          align-middle
+          bg-gray-200
+          md:grid-cols-3
+          h-fit
+        ">
+            <!-- todo  TITLE -->
+            <div
+                class="relative w-full py-4 pt-0 mt-3 font-extrabold tracking-wider text-blue-600 align-middle md:min-w-full md:col-span-3 h-fit">
+                <!-- <div class="absolute w-2/3 py-1 mr-auto bg-blue-500 rounded-md mt-11"></div> -->
+                <h1 style="clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%)" class="
+              bg-blue-600
+              title
+              py-4
+              pl-2
+              pr-16
+              w-fit
+              text-[28px] text-white
+              font-bold
+            ">
+                    Our core values
+                </h1>
+            </div>
+
+            <!-- todo  CARDS     -->
+            <!-- <div class="w-full min-h"></div> -->
+            <div id="cardanim" class="p-3 card">
+                <div class="my-1 overflow-hidden bg-white border-2 border-gray-300 rounded-lg shadow shadow-gray-500">
+                    <img src="../assets/economicempowerment.jpg" alt="image" class="w-full" />
+                    <div class="p-8 text-center sm:p-9 md:p-7 xl:p-9">
+                        <h3>
+                            <a href="javascript:void(0)" class="
+                    font-semibold
+                    text-dark text-xl
+                    sm:text-[24px]
+                    md:text-xl
+                    lg:text-[22px]
+                    xl:text-xl
+                    2xl:text-[22px]
+                    mb-4
+                    block
+                    hover:text-primary
+                  ">
+                                Economic <br class="hidden md:block" />
+                                empowerment
+                            </a>
+                        </h3>
+                        <p class="text-base leading-relaxed text-body-color mb-7">
+                            Lorem ipsum dolor sit amet pretium consectetur adipiscing elit.
+                            Lorem consectetur adipiscing elit.
+                        </p>
+                        <a href="javascript:void(0)" class="
+                  inline-block
+                  py-2
+                  px-7
+                  border border-[#165deb]
+                  rounded-full
+                  text-base text-body-color
+                  font-medium
+                  hover:border-primary hover:bg-primary
+                  text-white
+                  bg-blue-600
+                  transition
+                ">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cardanim" class="p-3 card">
+                <div
+                    class="my-1 overflow-hidden delay-1000 bg-white border-2 border-gray-300 rounded-lg shadow shadow-gray-500">
+                    <img src="../assets/socialcutural.jpg" alt="image" class="w-full" />
+                    <div class="p-8 text-center sm:p-9 md:p-7 xl:p-9">
+                        <h3>
+                            <a href="javascript:void(0)" class="
+                    font-semibold
+                    text-dark text-xl
+                    sm:text-[24px]
+                    md:text-xl
+                    lg:text-[22px]
+                    xl:text-xl
+                    2xl:text-[22px]
+                    mb-4
+                    block
+                    hover:text-primary
+                  ">
+                                social cultural<br class="hidden md:block" />
+                                empowerment
+                            </a>
+                        </h3>
+                        <p class="text-base leading-relaxed text-body-color mb-7">
+                            Lorem ipsum dolor sit amet pretium consectetur adipiscing elit.
+                            Lorem consectetur adipiscing elit.
+                        </p>
+                        <a href="javascript:void(0)" class="
+                  inline-block
+                  py-2
+                  px-7
+                  border border-[#165deb]
+                  rounded-full
+                  text-base text-body-color
+                  font-medium
+                  hover:border-primary hover:bg-primary
+                  text-white
+                  bg-blue-600
+                  transition
+                ">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cardanim" class="p-3 card">
+                <div class="my-1 overflow-hidden bg-white border-2 rounded-lg shadow shadow-gray-500">
+                    <img src="../assets/technology.jpg" alt="image" class="w-full" />
+                    <div class="p-8 text-center sm:p-9 md:p-7 xl:p-9">
+                        <h3>
+                            <a href="javascript:void(0)" class="
+                    font-semibold
+                    text-dark text-xl
+                    sm:text-[24px]
+                    md:text-xl
+                    lg:text-[22px]
+                    xl:text-xl
+                    2xl:text-[22px]
+                    mb-4
+                    block
+                    hover:text-primary
+                  ">
+                                innovation and <br class="hidden md:block" />
+                                trechnology
+                            </a>
+                        </h3>
+                        <p class="text-base leading-relaxed text-body-color mb-7">
+                            Lorem ipsum dolor sit amet pretium consectetur adipiscing elit.
+                            Lorem consectetur adipiscing elit.
+                        </p>
+                        <a href="javascript:void(0)" class="
+                  inline-block
+                  py-2
+                  px-7
+                  border border-[#165deb]
+                  rounded-full
+                  text-base text-body-color
+                  font-medium
+                  hover:border-primary hover:bg-primary
+                  text-white
+                  bg-blue-600
+                  transition
+                ">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+        </section>
+
+        <!-- todo news -->
+        <section id="news" class="
+          flex flex-col
+          md:flex-row
+          
+          md:overflow-x-scroll
+
+          items-center
+          justify-start
+          w-full
+          py-5
+          pt-[60px]
+          bg-gray-200
+          sm:px-10
+          md:px-0
+          lg:grid-cols-3 lg:grid
+          h-fit
+          lg:w-fit
+        ">
+            <div class="block w-full px-5 py-5 text-3xl text-left title sm:col-span-full">
+                <!-- todo divider -->
+                <!-- <div class="w-full h-[45px] bg-transparent block lg:col-span-2"></div> -->
+
+                <h2 style="clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%)" class="
+              bg-blue-600
+              py-5
+              pl-2
+              pr-16
+              w-fit
+              text-[28px] text-white
+              font-bold
+            ">
+                    Latest News
+                </h2>
+            </div>
+
+            <!-- todo news card -->
+            <div id="cardanim" class="p-3 card">
+                <div class="
+              flex flex-col
+              mt-[32px]
+              ml-auto
+              mr-auto
+              md:w-11/12
+              w-11/12
+              bg-white
+              shadow md:flex-1
+              h-fit
+              shadow-gray-500
+              rounded-xl
+            ">
+                    <img class="w-full h-auto mb-3 bg-cover rounded-t-md" src="../assets/socialcutural.jpg" alt=""
+                        srcset="" />
+
+                    <h2 class="
+                block
+                w-full
+                px-2
+                py-2
+                text-blue-600
+                font-extrabold
+                text-[22px]
+                uppercase
+              ">
+                        visit of kemende
+                    </h2>
+                    <p class="
+                block
+                w-full
+                px-2
+                py-2
+                mb-4
+                text-left text-gray-800
+                font-medium
+                text-[18px]
+              ">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+                        provident dolor ipsam velit! Repudiandae sint ducimus accusamus
+                        impedit quas reprehenderit?
+                    </p>
+
+                    <a href="javascript:void(0)" class="
+                w-fit
+                inline-block
+                py-2
+                px-7
+                border border-[#165deb]
+                text-center
+                rounded-full
+                text-base text-body-color
+                font-medium
+              hover:cursor-pointer
+                transition
+                mb-5
+                ml-auto    bg-blue-600
+                text-white
+                mr-auto
+              ">
+                        View Details
+                    </a>
+                </div>
+            </div>
+
+            <!-- todo news card -->
+
+            <div id="cardanim" class="p-3 card">
+                <div class="
+              flex flex-col
+              md:w-11/12
+              mt-[32px]
+              ml-auto
+              w-11/12
+              mr-auto
+              bg-white
+              shadow
+              h-fit
+              shadow-gray-500
+              rounded-xl
+            ">
+                    <img class="w-full h-auto mb-3 bg-cover rounded-t-md" src="../assets/technology.jpg" alt=""
+                        srcset="" />
+
+                    <h2 class="
+                block
+                w-full
+                px-2
+                py-2
+                text-blue-600
+                font-extrabold
+                text-[22px]
+                uppercase
+              ">
+                        visit of kiambu
+                    </h2>
+                    <p class="
+                block
+                w-full
+                px-2
+                py-2
+                mb-4
+                text-left text-gray-800
+                font-medium
+                text-[18px]
+              ">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+                        provident dolor ipsam velit! Repudiandae sint ducimus accusamus
+                        impedit quas reprehenderit?
+                    </p>
+
+                    <a href="javascript:void(0)" class="
+                w-fit
+                inline-block
+                py-2
+                px-7
+                border border-[#165deb]
+                text-center
+                rounded-full
+                text-base text-body-color
+                font-medium
+               hover:cursor-pointer
+                transition
+                mb-5    bg-blue-600
+                text-white
+                ml-auto
+                mr-auto
+              ">
+                        View Details
+                    </a>
+                </div>
+            </div>
+
+            <!-- todo news card -->
+            <div id="cardanim" class="p-3 card">
+                <div class="
+              flex flex-col
+              md:w-11/12
+              mt-[32px]
+              ml-auto
+              w-11/12
+              mr-auto
+              bg-white
+              shadow
+              h-fit
+
+              shadow-gray-500
+              rounded-xl
+            ">
+                    <img class="w-full h-auto mb-3 bg-cover rounded-t-md" src="../assets/economicempowerment.jpg" alt=""
+                        srcset="" />
+
+                    <h2 class="
+                block
+                w-full
+                px-2
+                py-2
+                text-blue-600
+                font-extrabold
+                text-[22px]
+                uppercase
+              ">
+                        visit of kinale
+                    </h2>
+                    <p class="
+                block
+                w-full
+                px-2
+                py-2
+                mb-4
+                text-left text-gray-800
+                font-medium
+                text-[18px]
+              ">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+                        provident dolor ipsam velit! Repudiandae sint ducimus accusamus
+                        impedit quas reprehenderit?
+                    </p>
+
+                    <a href="javascript:void(0)" class="
+                w-fit
+                inline-block
+                py-2
+                px-7
+                border border-[#165deb]
+                text-center
+                rounded-full
+                text-base text-body-color
+                font-medium
+                hover:cursor-pointer
+                transition
+                mb-5
+                ml-auto
+                bg-blue-600
+                text-white
+                mr-auto
+              ">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- todo contact fotm -->
+        <section id="contacts" class="
+          relative
+          flex flex-col
+          mb-1
+          items-center
+          pt-[80px]
+          justify-start
+          w-full
+          px-2
+          pb-10
+          ml-auto
+          mr-auto
+          text-center
+          bg-gradient-to-t
+          from-blue-800
+          to-blue-500
+          lg:gap-x-5
+          h-fit
+          lg:grid lg:grid-cols-2
+        ">
+            <!-- todo for text -->
+            <!-- <div class="w-full h-[80px] bg-transparent block lg:col-span-2"></div> -->
+
+            <div id="formtext"
+                class="relative z-20 flex flex-col w-full h-full bg-transparent shadow-sm lg:justify-start lg:items-center rounded-xl gap-x-5">
+                <img class="absolute z-20 hidden w-full h-full opacity-50 lg:block" src="../assets/image2vector.svg"
+                    alt="" srcset="" />
+
+                <div class="
+              w-fit
+              title
+              mt-4
+              pt-2
+              pb-2
+              lg:mb-24
+              tracking-widest
+              text-blue-500
+              pl-4
+              pr-[100px]
+              
+              lg:text-[34px]
+              text-[24px]
+              sm:text-[30px]
+              bg-white
+              font-normal
+              mb-4
+            " style="clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%)">
+                    <h2 class="font-poppins">join the winning team</h2>
+                </div>
+                <p class="
+              mt-4
+             gap-y-10
+              text-left text-[20px] text-white
+              font-light
+              tracking-wide
+              bg-blue-500/70
+
+
+              md:w-4/5
+              lg:relative lg:z-40 
+              italic
+              ml-auto
+              mr-auto
+              opacity-100
+              px-4 
+              py-4
+              md:text-[25px]
+              lg:w-full
+            ">
+                    join the team that will bring change to Kenya in all its dimensions
+                    financial social & technological fronts
+                </p>
+
+                <div
+                    class="relative z-50 flex flex-col-reverse items-center justify-center w-11/12 ml-auto mr-auto md:w-4/5 bg-blue-500/70 lg:flex-col-reverse lg:w-full">
+                    <h1 class="
+                block
+                text-center text-[25px]
+                lg:text-[60px]
+                py-0
+                pb-4 px-4
+                b
+                tracking-wide
+                text-white 
+                
+                font-thin  ml-auto
+                mr-auto
+                lg:lowercase lg:relative lg:z-40    lg:w-full
+                .
+              ">
+                        members <span>& counting</span>
+                    </h1>
+
+                    <div class="
+                font-normal
+                px-8
+                md:border-white md:border-2
+                rounded-full
+                
+                relative 
+                bottom-0  ml-auto
+                mr-auto
+                block
+                z-30
+                text-blue-100 text-[28px]
+                h-fit
+                lg:text-[60px]
+                w-full
+                lg:rounded-none  lg:w-full
+                lg:border-none
+                
+              ">
+                        + 127699
+                    </div>
+                </div>
+            </div>
+
+            <!-- todo form -->
+
+            <div id="form"
+                class="relative z-20 flex flex-col items-center justify-start w-11/12 gap-3 pb-16 mt-4 bg-white border-t-4 border-gray-400 shadow-xl md:w-4/5 lg:w-11/12 bg-t-gray-200 shadow-gray-700">
+                <h3 class="w-full pt-3 pb-1 mt-2 text-3xl font-semibold text-blue-600 uppercase bg-white md:w-4/5">
+                    register
+                </h3>
+
+                <!-- todo SIR NAME -->
+                <div class="block w-full px-12 my-1 mt-5 text-left">
+                    <label class="block text-blue-600/80 text-[18px]" for="name">
+                        surname</label>
+                    <input required
+                        class="w-full px-2 py-2 mt-1 border-b-2 border-gray-500 outline-none focus:border-b-4 focus:border-blue-600"
+                        type="text" id="surname" />
+                    <div id="required" class="hidden text-base text-red-400">
+                        field is required
+                    </div>
+                </div>
+
+                <!-- TODO OTHERNAMES -->
+                <div class="block w-full px-12 my-1 mt-5 text-left">
+                    <label class="block text-blue-600/80 text-[18px]" for="othernames">
+                        other names</label>
+                    <input
+                        class="w-full px-2 py-2 mt-1 border-b-2 border-gray-500 outline-none focus:border-b-4 focus:border-blue-600"
+                        type="text" id="othernames" />
+                    <div id="required" class="hidden text-base text-red-400">
+                        field is required
+                    </div>
+                </div>
+                <!-- todo ID -->
+
+                <div class="block w-full px-12 my-1 text-left">
+                    <label class="block text-blue-600/80 text-[18px]" for="id">
+                        national ID</label>
+                    <input
+                        class="w-full px-2 py-2 border-b-2 border-gray-500 outline-none focus:border-b-4 focus:border-blue-600"
+                        type="number" onpaste="return false" ondrop="return false"
+                        onkeypress="return event.charCode>=48&&event.charCode<=57" id="nationalid" />
+                    <div id="required" class="hidden text-base text-red-400">
+                        field is required
+                    </div>
+                </div>
+                <!-- todo EMAIL -->
+
+                <div class="block w-full px-12 my-1 text-left">
+                    <label class="block text-blue-600/80 text-[18px]" for="email">
+                        E-mail</label>
+                    <input
+                        class="w-full px-2 py-2 border-b-2 border-gray-500 outline-none focus:border-b-4 focus:border-blue-600"
+                        type="email" id="email" />
+                    <div id="required" class="hidden text-base text-red-400">
+                        field is required
+                    </div>
+                </div>
+
+                <!-- todo county list -->
+                <div class="block w-full px-12 my-1 text-left">
+                    <label class="block text-blue-600/80 text-[18px] mb-2" for="email">
+                        select your couty</label>
+
+                    <select class="w-full py-4" name="" id="county">
+                        <optgroup>
+                            <option id="county_chzn_o_1" class="active-result" style="">
+                                select your county
+                            </option>
+
+                            <option id="county_chzn_o_1" class="active-result" style="">
+                                MOMBASA COUNTY
+                            </option>
+                            <option id="county_chzn_o_2" class="active-result" style="">
+                                KWALE COUNTY
+                            </option>
+                            <option id="county_chzn_o_3" class="active-result" style="">
+                                KILIFI COUNTY
+                            </option>
+                            <option id="county_chzn_o_4" class="active-result" style="">
+                                TANA RIVER COUNTY
+                            </option>
+                            <option id="county_chzn_o_5" class="active-result" style="">
+                                LAMU COUNTY
+                            </option>
+                            <option id="county_chzn_o_6" class="active-result" style="">
+                                TAITA TAVETA
+                            </option>
+                            <option id="county_chzn_o_7" class="active-result" style="">
+                                GARISSA COUNTY
+                            </option>
+                            <option id="county_chzn_o_8" class="active-result" style="">
+                                WAJIR COUNTY
+                            </option>
+                            <option id="county_chzn_o_9" class="active-result" style="">
+                                MANDERA COUNTY
+                            </option>
+                            <option id="county_chzn_o_10" class="active-result" style="">
+                                MARSABIT COUNTY
+                            </option>
+                            <option id="county_chzn_o_11" class="active-result" style="">
+                                ISIOLO COUNTY
+                            </option>
+                            <option id="county_chzn_o_12" class="active-result" style="">
+                                MERU COUNTY
+                            </option>
+                            <option id="county_chzn_o_13" class="active-result" style="">
+                                THARAKA-NITHI
+                            </option>
+                            <option id="county_chzn_o_14" class="active-result" style="">
+                                EMBU COUNTY
+                            </option>
+                            <option id="county_chzn_o_15" class="active-result" style="">
+                                KITUI COUNTY
+                            </option>
+                            <option id="county_chzn_o_16" class="active-result" style="">
+                                MACHAKOS COUNTY
+                            </option>
+                            <option id="county_chzn_o_17" class="active-result" style="">
+                                MAKUENI COUNTY
+                            </option>
+                            <option id="county_chzn_o_18" class="active-result" style="">
+                                NYANDARUA COUNTY
+                            </option>
+                            <option id="county_chzn_o_19" class="active-result" style="">
+                                NYERI COUNTY
+                            </option>
+                            <option id="county_chzn_o_20" class="active-result" style="">
+                                KIRINYAGA COUNTY
+                            </option>
+                            <option id="county_chzn_o_21" class="active-result" style="">
+                                MURANGA COUNTY
+                            </option>
+                            <option id="county_chzn_o_22" class="active-result" style="">
+                                KIAMBU COUNTY
+                            </option>
+                            <option id="county_chzn_o_23" class="active-result" style="">
+                                TURKANA COUNTY
+                            </option>
+                            <option id="county_chzn_o_24" class="active-result" style="">
+                                WEST POKOT COUNTY
+                            </option>
+                            <option id="county_chzn_o_25" class="active-result" style="">
+                                SAMBURU COUNTY
+                            </option>
+                            <option id="county_chzn_o_26" class="active-result" style="">
+                                TRANSZOIA COUNTY
+                            </option>
+                            <option id="county_chzn_o_27" class="active-result" style="">
+                                UASIN GISHU
+                            </option>
+                            <option id="county_chzn_o_28" class="active-result" style="">
+                                ELGEYO MARAKWET
+                            </option>
+                            <option id="county_chzn_o_29" class="active-result" style="">
+                                NANDI COUNTY
+                            </option>
+                            <option id="county_chzn_o_30" class="active-result" style="">
+                                BARINGO COUNTY
+                            </option>
+                            <option id="county_chzn_o_31" class="active-result" style="">
+                                LAIKIPIA COUNTY
+                            </option>
+                            <option id="county_chzn_o_32" class="active-result" style="">
+                                NAKURU COUNTY
+                            </option>
+                            <option id="county_chzn_o_33" class="active-result" style="">
+                                NAROK COUNTY
+                            </option>
+                            <option id="county_chzn_o_34" class="active-result" style="">
+                                KAJIADO COUNTY
+                            </option>
+                            <option id="county_chzn_o_35" class="active-result" style="">
+                                KERICHO COUNTY
+                            </option>
+                            <option id="county_chzn_o_36" class="active-result" style="">
+                                BOMET COUNTY
+                            </option>
+                            <option id="county_chzn_o_37" class="active-result" style="">
+                                KAKAMEGA COUNTY
+                            </option>
+                            <option id="county_chzn_o_38" class="active-result" style="">
+                                VIHIGA COUNTY
+                            </option>
+                            <option id="county_chzn_o_39" class="active-result" style="">
+                                BUNGOMA COUNTY
+                            </option>
+                            <option id="county_chzn_o_40" class="active-result" style="">
+                                BUSIA COUNTY
+                            </option>
+                            <option id="county_chzn_o_41" class="active-result" style="">
+                                SIAYA COUNTY
+                            </option>
+                            <option id="county_chzn_o_42" class="active-result" style="">
+                                KISUMU COUNTY
+                            </option>
+                            <option id="county_chzn_o_43" class="active-result" style="">
+                                HOMABAY COUNTY
+                            </option>
+                            <option id="county_chzn_o_44" class="active-result" style="">
+                                MIGORI COUNTY
+                            </option>
+                            <option id="county_chzn_o_45" class="active-result" style="">
+                                KISII COUNTY
+                            </option>
+                            <option id="county_chzn_o_46" class="active-result" style="">
+                                NYAMIRA COUNTY
+                            </option>
+                            <option id="county_chzn_o_47" class="active-result" style="">
+                                NAIROBI COUNTY
+                            </option>
+                            <option id="county_chzn_o_48" class="active-result" style="">
+                                DIASPORA
+                            </option>
+                            <option id="county_chzn_o_49" class="active-result" style="">
+                                PRISONS
+                            </option>
+                        </optgroup>
+                    </select>
+                    <div id="required" class="hidden text-base text-red-400">
+                        field is required
+                    </div>
+                </div>
+
+                <!-- todo checkbox -->
+                <div class="inline-flex justify-center w-full py-4 px-14 text-[16px]">
+                    <span>
+                        by submitting this form <br />
+                        you agree to our terms and conditions</span>
+                </div>
+
+                <!-- todo submit button -->
+                <div class="block w-full px-12 my-1 text-center">
+                    <button id="formbutton"
+                        class="w-1/2 py-2 tracking-wider text-white bg-blue-500 rounded-sm shadow-md shadow-gray-700">
+                        submit
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- todo footer -->
+        <section>
+            <footer
+                class="relative z-40 flex flex-col items-center w-full bg-gray-200 lg:py-1 lg:grid lg:grid-cols-4 lg:bg-gradient-to-b from-blue-800 to-blue-500 lg:items-start lg:h-fit">
+                <!-- todo logo-->
+
+                <div
+                    class="flex flex-wrap items-center w-full py-2 pb-3 mb-0 bg-transparent md:w-4/5 lg:ml-2 lg:mb-0 lg:bg-gradient-to-b lg:from-transparent lg:to-transparent lg:col-span-2 lg:flex lg:items-center lg:gap-x-3 lg:justify-start lg:flex-row bg-gradient-to-b from-blue-800 to-blue-600 justify-evenly">
+                    <div class="
+                bg-teal-400
+                w-[200px]
+                h-[200px]
+                mt-6
+                lg:ml-2
+                rounded-full
+                lg:w-[100px] lg:h-[100px]
+              ">
+                        <img src="../assets/logo-site.png" alt="" srcset="" />
+                    </div>
+
+                    <h2 class="
+                px-5
+                mt-4
+                mb-2
+                w-full
+                lg:w-3/4
+                text-center text-white text-[32px]
+                font-semibold
+              ">
+                        JOIN THE WINNING TEAM
+                    </h2>
+                    <h2 class="px-5 mt-4 text-blue-300 text-[24px] italic">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse
+                        dicta quidem est deserunt cumque, voluptatum ea rerum illum eaque,
+                        repellendus beatae. Natus corporis voluptatum qui?
+                    </h2>
+                </div>
+
+                <!-- todo social links -->
+                <div
+                    class="flex flex-row flex-wrap items-center w-full py-2 pb-10 mb-0 bg-transparent md:w-4/5 lg:mb-0 bg-gradient-to-t from-blue-800 to-blue-600 lg:bg-gradient-to-b lg:from-transparent lg:to-transparent lg:flex-col lg:gap-y-3 lg:items-start justify-evenly">
+                    <div class="block w-full py-2 mb-3 text-center title">
+                        <h1 style="clip-path: polygon(0 0, 100% 0, 82% 100%, 0% 100%)" class="
+                  bg-white
+                  py-5
+                  pl-5
+                  lg:py-2
+                  pr-16
+                  w-fit
+                  text-[24px] text-blue-600
+                  font-medium
+                ">
+                            visit us on
+                        </h1>
+                    </div>
+                    <!-- todo facebbok -->
+                    <div class="flex flex-col items-center justify-start gap-y-5 lg:flex-row lg:w-full gap-x-7">
+                        <svg class="w-[50px] h-[50px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path fill="#ffffff"
+                                d="M400 32H48A48 48 0 0 0 0 80v352a48 48 0 0 0 48 48h137.25V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.27c-30.81 0-40.42 19.12-40.42 38.73V256h68.78l-11 71.69h-57.78V480H400a48 48 0 0 0 48-48V80a48 48 0 0 0-48-48z" />
+                        </svg>
+                        <h3 class="lg:block lg:w-2/3 text-[16px] text-white font-thin">
+                            Wakenya tujibebe
+                        </h3>
+                    </div>
+                    <!-- todo twitter -->
+
+                    <div class="flex flex-col items-center justify-start gap-y-5 lg:flex-row lg:w-full gap-x-7">
+                        <svg fill="#ffffff" class="w-[50px] h-[50px] text-white" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512">
+                            <path
+                                d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z" />
+                        </svg>
+
+                        <h3 class="lg:block lg:w-2/3 text-[16px] text-white font-thin">
+                            @Wakenya_tujibebe
+                        </h3>
+                    </div>
+                    <!-- todo ig -->
+
+                    <div class="flex flex-col items-center justify-start gap-y-5 lg:flex-row lg:w-full gap-x-7">
+                        <svg fill="#ffffff" class="w-[50px] h-[50px]" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512">
+                            <path
+                                d="M224,202.66A53.34,53.34,0,1,0,277.36,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.41-30.41c-21-8.29-71-6.43-94.3-6.43s-73.25-1.93-94.31,6.43a54,54,0,0,0-30.41,30.41c-8.28,21-6.43,71.05-6.43,94.33S91,329.26,99.32,350.33a54,54,0,0,0,30.41,30.41c21,8.29,71,6.43,94.31,6.43s73.24,1.93,94.3-6.43a54,54,0,0,0,30.41-30.41c8.35-21,6.43-71.05,6.43-94.33S357.1,182.74,348.75,161.67ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.38-148.3a19.14,19.14,0,1,1,19.13-19.14A19.1,19.1,0,0,1,309.42,189.74ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32ZM382.88,322c-1.29,25.63-7.14,48.34-25.85,67s-41.4,24.63-67,25.85c-26.41,1.49-105.59,1.49-132,0-25.63-1.29-48.26-7.15-67-25.85s-24.63-41.42-25.85-67c-1.49-26.42-1.49-105.61,0-132,1.29-25.63,7.07-48.34,25.85-67s41.47-24.56,67-25.78c26.41-1.49,105.59-1.49,132,0,25.63,1.29,48.33,7.15,67,25.85s24.63,41.42,25.85,67.05C384.37,216.44,384.37,295.56,382.88,322Z" />
+                        </svg>
+
+                        <h3 class="lg:block lg:w-2/3 text-[16px] text-white font-thin">
+                            @Wakenya_tujibebe
+                        </h3>
+                    </div>
+                </div>
+                <!-- todo CONTACTS SECTION -->
+                <div
+                    class="flex flex-wrap items-center justify-start w-full px-5 py-4 pl-0 md:w-4/5 lg:bg-gradient-to-b lg:from-transparent lg:to-transparent bg-gradient-to-b from-blue-800 to-blue-600 lg:h-fit">
+                    <div class="block w-full py-2 mb-3 text-cente title">
+                        <h1 style="clip-path: polygon(0 0, 100% 0, 82% 100%, 0% 100%)" class="
+                  bg-white
+                  py-5
+                  lg:py-2
+                  pl-5
+                  pr-16
+                  w-fit
+                  text-[24px] text-blue-600
+                  font-medium
+                ">
+                            Contact us
+                        </h1>
+                    </div>
+
+                    <!-- todo phone -->
+
+                    <div class="flex flex-row items-center justify-start w-full py-4">
+                        <svg class="w-[40px] h-[40px] ml-2 lg:w-[25px] lg:h-[25px]" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512">
+                            <path fill="#ffffff"
+                                d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z" />
+                        </svg>
+
+
+                        <h1 class="text-white text-[25px] font-thin ml-4 lg:text-[18px] 
+                  tracking-wider
+                  ">
+                            +254-722000000
+                        </h1>
+                    </div>
+
+                    <!-- todo email -->
+                    <div class="flex flex-row items-center justify-start w-full py-4">
+                        <svg class="w-[40px] h-[40px] ml-2 lg:w-[25px] lg:h-[25px]" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512">
+                            <path fill="#ffffff"
+                                d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z" />
+                        </svg>
+
+                        <h1 class="
+                  text-white text-[25px]
+                  font-thin
+                  ml-4
+                  mb-auto
+                  tracking-wider
+                  lg:text-[18px]
+                ">
+                            info@tujibebe.co.ke
+                        </h1>
+                    </div>
+                    <!-- todo location -->
+                    <div class="flex flex-row items-center justify-start w-full py-4">
+                        <svg class="w-[40px] h-[40px] ml-2 lg:w-[25px] lg:h-[25px]" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512">
+                            <path fill="#ffffff"
+                                d="M168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2H168.3zM192 256C227.3 256 256 227.3 256 192C256 156.7 227.3 128 192 128C156.7 128 128 156.7 128 192C128 227.3 156.7 256 192 256z" />
+                        </svg>
+
+                        <h1 class="
+                  text-white text-[25px]
+                  font-thin
+                  ml-4
+                  mb-auto
+                  lg:text-[18px]
+                  tracking-wider
+                ">
+                            Westlands, JIJI Towers <br />Nairobi Kenya
+                        </h1>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>
