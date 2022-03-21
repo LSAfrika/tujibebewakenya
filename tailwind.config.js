@@ -68,5 +68,8 @@ fontFamily:{
 
     },
   },
-  plugins: [],
+  plugins: [
+
+    require('tailwind-scrollbar')
+  ],
 }

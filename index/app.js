@@ -1,6 +1,7 @@
-import  {initializeApp}  from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js";
-import {getFirestore,collection, getDocs,addDoc} from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
-
+import  {initializeApp}  from "firebase/app";
+//https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js
+import {getFirestore,collection, getDocs,addDoc} from "firebase/firestore"
+//https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js
 
 const firebaseConfig = {
 
@@ -33,9 +34,17 @@ const formbtn = document.getElementById('formbutton')
 const modal= document.getElementById('modal')
 const burgermenu = document.getElementById('burger')
 const mobilemenu = document.getElementById('mobile')
-
+const modalbackdrop = document.getElementById('newss')
+const modalpane = document.getElementById('newsmodal')
+const economicempowerment = document.getElementById('economic')
+const socialempowerment = document.getElementById('social')
+const techempowerment = document.getElementById('tech')
+const newslinks = document.querySelectorAll('#newslinks')
 const links = document.querySelectorAll('#links')
+const modaltite = document.getElementById('modaltitle')
+const modalcontent = document.getElementById('modalcontent')
 
+// console.log('btn: ',economicempowerment)
 // QUERY SELECTORS
 const values_section=document.querySelectorAll('.title');
 const cards =document.querySelectorAll('.card')
@@ -66,7 +75,7 @@ async function  retrievedata(){
     }
 
 }
-retrievedata()
+//retrievedata()
 
 
 
@@ -166,10 +175,73 @@ submitted.classList.add('hidden')
 
 
     // console.log('email: ',email.value)
+    let active =false;
+    modalpane.addEventListener('mouseenter',()=>{
+         active=false;
+        console.log('mouse entered')
+       
+        
+       })
+    modalpane.addEventListener('mouseleave',()=>{
+         active=true;
+        console.log('mouse left')
+       
+        
+       })
+
+    modalbackdrop.addEventListener('click',()=>{
+if(!active)return
+
+        modalbackdrop.classList.add('hidden')
+        modalbackdrop.classList.remove('flex')
+
+        console.log('backdrop clicked')
+    })
+
+    let n=0
+    newslinks.forEach(link=>{
+n++
+console.log('n',n)
+console.log('links length',link)
+        link.addEventListener("click",()=>{
+        modalbackdrop.classList.add('flex')
+        modalbackdrop.classList.remove('hidden')
+        const title= link.parentElement.children[1].innerHTML
+        modaltite.textContent =title
+        // console.log('parent el: ',) 
+
+        })
+    })
+  
+
+    //#region values section
+    economicempowerment.addEventListener('click',()=>{
+        console.log('emitter working')
+        modaltite.textContent =' economic empowerment'
+        modalbackdrop.classList.add('flex')
+        modalbackdrop.classList.remove('hidden')
+    }
+
+    ) 
+     socialempowerment.addEventListener('click',()=>{
+        modaltite.textContent =' social cutural'
+        modalbackdrop.classList.add('flex')
+        modalbackdrop.classList.remove('hidden')
+    }
+    )  
+console.log('btn: ',socialempowerment)
+
+    techempowerment.addEventListener('click',()=>{
+        modaltite.textContent =' technological empowerment'
+        modalbackdrop.classList.add('flex')
+        modalbackdrop.classList.remove('hidden')
+    }
+    )
+
+    //#endregion
 
 
     //FORM BUTTON SUBMIT
-
     formbtn.addEventListener("click",()=>{
         formvalue()
     })
@@ -180,7 +252,7 @@ submitted.classList.add('hidden')
         mobilemenu.classList.toggle('flex')
     })
 
-    console.log(links);
+  //  console.log(links);
 
     links.forEach(link=>{
 
