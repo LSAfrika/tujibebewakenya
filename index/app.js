@@ -1,25 +1,9 @@
 import  {initializeApp}  from "firebase/app";
-//https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js
+// import Splide from '@splidejs/splide';
+
 import {getFirestore,collection, getDocs,addDoc} from "firebase/firestore"
-//https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js
 
-const firebaseConfig = {
 
-  apiKey: "AIzaSyA-3s7IKA1ruwHg9MNf-lhtzY-chy4wbu4",
-
-  authDomain: "wakenya-tujibebe-party.firebaseapp.com",
-
-  projectId: "wakenya-tujibebe-party",
-
-  storageBucket: "wakenya-tujibebe-party.appspot.com",
-
-  messagingSenderId: "355806812974",
-
-  appId: "1:355806812974:web:fb001c145c2994175838bf",
-
-  measurementId: "G-JKT9NG1Q8L"
-
-};
 
 
 
@@ -44,8 +28,23 @@ const links = document.querySelectorAll('#links')
 const modaltite = document.getElementById('modaltitle')
 const modalcontent = document.getElementById('modalcontent')
 
-// console.log('btn: ',economicempowerment)
+const scrollrect = document.getElementById('scrollrect')
+console.log('rect: ',scrollrect.scrollWidth)
+
+
+
+const slide_1=document.getElementById('imgopacity1')
+const slide_2=document.getElementById('imgopacity2')
+const slide_3=document.getElementById('imgopacity3')
+const economictag=document.getElementById('economictag')
+const socialtag=document.getElementById('socialtag')
+const technologytag=document.getElementById('technologytag')
+
+
+
+
 // QUERY SELECTORS
+
 const values_section=document.querySelectorAll('.title');
 const cards =document.querySelectorAll('.card')
 
@@ -54,9 +53,33 @@ const form = document.querySelector('#form')
 const formtext = document.querySelector('#formtext');
 
 //firebase
-initializeApp(firebaseConfig);
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyA-3s7IKA1ruwHg9MNf-lhtzY-chy4wbu4",
+  
+    authDomain: "wakenya-tujibebe-party.firebaseapp.com",
+  
+    projectId: "wakenya-tujibebe-party",
+  
+    storageBucket: "wakenya-tujibebe-party.appspot.com",
+  
+    messagingSenderId: "355806812974",
+  
+    appId: "1:355806812974:web:fb001c145c2994175838bf",
+  
+    measurementId: "G-JKT9NG1Q8L"
+  
+  };
+  
+  
+  // Initialize Firebase
+  
+  initializeApp(firebaseConfig);
+  
 const db = getFirestore()
 const memberscollection =collection(db,'members')
+
 
 
 async function  retrievedata(){
@@ -75,9 +98,71 @@ async function  retrievedata(){
     }
 
 }
-//retrievedata()
+retrievedata()
+let counter=0;
+function valuescycle(){
+    counter++;
+
+    if(counter===1){
+        economictag.classList.add('slide_in')
+        economictag.classList.remove('slide_out')
+        socialtag.classList.add('initial_pos')
+        technologytag.classList.add('slide_out3')
 
 
+        slide_1.classList.add('fade_in')
+        slide_1.classList.remove('fade_out')
+        slide_2.classList.add('fade_out')
+        slide_3.classList.add('fade_out')
+        slide_3.classList.remove('fade_in')
+      //  console.log('counter value:',counter)
+        
+    }
+    if(counter===2){
+        economictag.classList.remove('slide_in')
+        economictag.classList.add('slide_out')
+        socialtag.classList.remove('slide_out3')
+
+        socialtag.classList.add('slide_in_2')
+        socialtag.classList.remove('slide_out2')
+
+
+        slide_1.classList.remove('fade_in')
+        slide_1.classList.add('fade_out')
+        slide_2.classList.remove('fade_out')
+        slide_2.classList.add('fade_in')
+        slide_3.classList.add('fade_out')
+      //  console.log('counter value:',counter)
+        
+    }
+    if(counter===3){
+
+        socialtag.classList.remove('slide_in')
+        socialtag.classList.add('slide_out2')
+        technologytag.classList.remove('slide_out3')
+
+        technologytag.classList.add('slide_in_3')
+
+        slide_1.classList.remove('fade_in')
+        slide_1.classList.add('fade_out')
+        slide_2.classList.add('fade_out')
+        slide_2.classList.remove('fade_in')
+        slide_3.classList.add('fade_in')
+        slide_3.classList.remove('fade_out')
+     //   console.log('counter value:',counter)
+        counter=0;
+        
+        // console.log('counter reset:',counter)
+        
+    }
+    setTimeout(() => {
+        valuescycle()
+    }, 8000);
+
+
+
+}
+valuescycle()
 
 
 function  formvalue (){
@@ -175,7 +260,7 @@ submitted.classList.add('hidden')
 
 
     // console.log('email: ',email.value)
-    let active =false;
+    let active =true;
     modalpane.addEventListener('mouseenter',()=>{
          active=false;
         console.log('mouse entered')
@@ -195,18 +280,19 @@ if(!active)return
         modalbackdrop.classList.add('hidden')
         modalbackdrop.classList.remove('flex')
 
-        console.log('backdrop clicked')
+      //  console.log('backdrop clicked')
     })
 
-    let n=0
+    // let n=0
     newslinks.forEach(link=>{
-n++
-console.log('n',n)
-console.log('links length',link)
+// n++
+//console.log('n',n)
+//console.log('links length',link)
         link.addEventListener("click",()=>{
         modalbackdrop.classList.add('flex')
         modalbackdrop.classList.remove('hidden')
-        const title= link.parentElement.children[1].innerHTML
+       const title= link.parentElement.children[1].innerHTML
+    console.log(    link.parentElement.children[1].innerHTML)
         modaltite.textContent =title
         // console.log('parent el: ',) 
 
@@ -229,10 +315,10 @@ console.log('links length',link)
         modalbackdrop.classList.remove('hidden')
     }
     )  
-console.log('btn: ',socialempowerment)
+// console.log('btn: ',socialempowerment)
 
     techempowerment.addEventListener('click',()=>{
-        modaltite.textContent =' technological empowerment'
+        modaltite.textContent =' tech & innovation'
         modalbackdrop.classList.add('flex')
         modalbackdrop.classList.remove('hidden')
     }

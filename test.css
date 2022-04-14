@@ -1,0 +1,72 @@
+*,
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("./assets/economicempowerment.jpg");
+  transition: 5s;
+  animation: image;
+  /* animation-direction: alternate-reverse; */
+  animation-play-state: running;
+  animation-timing-function: ease-in-out;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+
+  /* // ease-in-out infinite; */
+}
+
+/* @keyframes image {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+    background-image: url("../assets/technology.jpg");
+    background-size: cover;
+  }
+  30% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+    background-image: url("../assets/socialcutural.jpg");
+    background-size: cover;
+  }
+  50% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+    background-image: url("../assets/economicempowerment.jpg");
+
+    background-size: cover;
+  }
+  720% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+
+    background-image: url("../assets/economicempowerment.jpg");
+    background-size: cover;
+  }
+} */
+@keyframes image {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+}

@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i raw.css -o ./index/styles.css --watch",
-    "prod": "npx tailwindcss -i raw.css -o ./index/styles.css --minify",
-    "build": "webpack"
+    "dev": "npx tailwindcss -i raw.css -o ./dist/styles.css --watch",
+    "prod": "npx tailwindcss -i raw.css -o ./dist/styles.css --minify",
+    "build": "webpack",
+    "zip": " gzipper compress dist gzipped"
   },
   "keywords": [],
   "author": "",

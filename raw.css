@@ -122,3 +122,201 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes imgfadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes imgfadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes cardtrans {
+  0% {
+    transform: translateX(500px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+#imagevalues {
+  /* background-image: url("../assets/economicempowerment.jpg"); */
+
+  transition: 5s;
+  /* animation: imagechange 20s ease-in infinite; */
+  /* animation-direction: alternate-reverse; */
+}
+
+/* @keyframes imagechange {
+  0% {
+    background-image: url("../assets/technology.jpg");
+    background-size: cover;
+  }
+  % {
+    background-image: url("../assets/socialcutural.jpg");
+    background-size: cover;
+  }
+  100% {
+    background-image: url("../assets/economicempowerment.jpg");
+    background-size: cover;
+  }
+} */
+
+/* #imagefadein {
+  animation: imgfadein 0.5s ease-in-out forwards;
+} */
+#cardtransition {
+  animation: cardtrans 1.5s ease-in-out forwards;
+}
+
+#imgopacity1 {
+  /* transition: 1s; */
+  /* background-image: url("../assets/economicempowerment.jpg"); */
+  background-size: cover;
+  /* animation: opac 1s ease-in forwards; */
+}
+#imgopacity2 {
+  /* transition: 1s; */
+  /* background-image: url("../assets/economicempowerment.jpg"); */
+  background-size: cover;
+  /* animation: opac 1s ease-in forwards; */
+}
+
+.fade_out {
+  animation: fadeout 2s ease-in-out forwards;
+}
+.fade_in {
+  animation: fadein 2s ease-in-out forwards;
+}
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.slide_in {
+  animation: slidein 2s ease-in forwards;
+}
+.slide_in_2 {
+  animation: slidein2 2s ease-in forwards;
+}
+.slide_in_3 {
+  animation: slidein3 2s ease-in forwards;
+}
+.slide_out {
+  animation: slideout 2s ease-in forwards;
+}
+.slide_out2 {
+  animation: slideout2 2s ease-in forwards;
+}
+.slide_out3 {
+  animation: slideout3 2s ease-in forwards;
+}
+.initial_pos {
+  transform: translateX(110%);
+}
+
+@keyframes slidein {
+  0% {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+@keyframes slidein2 {
+  0% {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+}
+@keyframes slidein3 {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-210%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideout {
+  0% {
+    transform: translateX(0%);
+  }
+  60% {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideout2 {
+  0% {
+    transform: translateX(-100%);
+  }
+  60% {
+    transform: translateX(-210%);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideout3 {
+  0% {
+    transform: translateX(-210%);
+  }
+  60% {
+    transform: translateX(-310%);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+}
